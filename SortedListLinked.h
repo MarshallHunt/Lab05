@@ -104,8 +104,21 @@ NextNode<T>** SortedListLinked<T>::find(T* item)
 
    //DO THIS
    //loop to find the correct location to insert/remove item
+   ListLinkedIterator<T>* iter = iterator();
+   int compare;
 
+   do
+   {
+     T* test = iter->next();
+     compare = (*compare_items) ( item,  test);
 
+    if(compare > 0)
+      {
+         prev = curr;
+         curr = curr->next();
+      }
+   }
+   while(iter->hasNext() && compare > 0);
 
 
 
